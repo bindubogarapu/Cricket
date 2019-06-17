@@ -1,9 +1,11 @@
 package com.cricket.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -25,5 +27,8 @@ public class PlayerEntity {
 	private int role;
 	private String country;
 	private int style;
-
+	
+	@OneToOne(cascade = CascadeType.ALL,mappedBy = "playerEntity")
+	private ProfileEntity profile;
+	
 }

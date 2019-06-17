@@ -24,6 +24,8 @@ public class PlayerDTO {
 	private long halfCenturies;
 	private String imagePath;
 	private String imageName;
+	private long profileId;
+	private long playerId;
 	
 	
 	

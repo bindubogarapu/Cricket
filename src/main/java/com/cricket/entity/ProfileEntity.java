@@ -23,7 +23,7 @@ public class ProfileEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long profileId;	
 	@OneToOne
-	@JoinColumn(name = "playerId")
+	@JoinColumn(name = "player_id")
 	private PlayerEntity playerEntity;
 	private long totalRuns;
 	private long totalMatches;
