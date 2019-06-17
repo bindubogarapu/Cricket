@@ -37,7 +37,8 @@ public class PlayerServiceImpl implements IPlayerService {
 		
 		player.setProfile(profile);
 		profile.setPlayerEntity(player);
-		playerRepository.save(player);		 
+		playerRepository.save(player);	
+		playerDTO.setPlayerId(player.getPlayerId());
 		return playerDTO;
 	}
 
