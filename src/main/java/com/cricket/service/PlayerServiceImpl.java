@@ -23,7 +23,7 @@ public class PlayerServiceImpl implements IPlayerService {
 	ProfileRepository  profileRepository;
 
 	@Override
-	public ResponseEntity<PlayerDTO> addPlayer(PlayerDTO playerDTO) {
+	public PlayerDTO addPlayer(PlayerDTO playerDTO) {
 		
 		PlayerEntity player = new PlayerEntity();
 		player.setAge(playerDTO.getAge());
@@ -37,10 +37,8 @@ public class PlayerServiceImpl implements IPlayerService {
 		
 		player.setProfile(profile);
 		profile.setPlayerEntity(player);
-		playerRepository.save(player);
-		
-		 
-		return new ResponseEntity<PlayerDTO>(playerDTO, HttpStatus.CREATED);
+		playerRepository.save(player);		 
+		return playerDTO;
 	}
 
 }

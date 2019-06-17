@@ -1,6 +1,7 @@
 package com.cricket.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,9 @@ public class PlayerController {
 	IPlayerService playerService;
 	
 	@PostMapping("/player")
-	public ResponseEntity<PlayerDTO> addPlayer(@RequestBody PlayerDTO playerDTO){
-		return playerService.addPlayer(playerDTO);
+	public ResponseEntity<PlayerDTO> addPlayer(@RequestBody PlayerDTO playerDTO){	
+		PlayerDTO dto = playerService.addPlayer(playerDTO);
+		return new ResponseEntity<PlayerDTO>(dto,HttpStatus.CREATED);
 				
 	}
 	

@@ -6,5 +6,5 @@ import com.cricket.dto.PlayerDTO;
 
 public interface IPlayerService {
  
-	public ResponseEntity<PlayerDTO> addPlayer(PlayerDTO playerDTO);
+	public PlayerDTO addPlayer(PlayerDTO playerDTO);
 }
