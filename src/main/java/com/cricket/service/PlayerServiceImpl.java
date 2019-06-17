@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.cricket.dto.PlayerDTO;
 import com.cricket.entity.PlayerEntity;
 import com.cricket.entity.ProfileEntity;
+import com.cricket.exception.PlayerNotFoundException;
 import com.cricket.repository.PlayerRepository;
 import com.cricket.repository.ProfileRepository;
 
@@ -39,6 +40,16 @@ public class PlayerServiceImpl implements IPlayerService {
 		profile.setPlayerEntity(player);
 		playerRepository.save(player);	
 		playerDTO.setPlayerId(player.getPlayerId());
+		return playerDTO;
+	}
+	
+	@Override
+	public PlayerDTO findPlayerByPlayerId(Long playerId){
+		PlayerEntity playerEntity = playerRepository.findById(playerId).orElse(null);
+	
+		PlayerDTO playerDTO = new PlayerDTO();
+		BeanUtils.copyProperties(playerEntity, playerDTO);
+		playerDTO.setBowlingAvg(playerEntity.getProfile().getBowlingAvg());
 		return playerDTO;
 	}
 
